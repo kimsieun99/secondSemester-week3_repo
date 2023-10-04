@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>Detail</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Detail page</h1>
+    <hr>
+    <h3>{{ blog.title }}</h3>
+    <p>{{ blog.body }}</p>
+{% endblock %}

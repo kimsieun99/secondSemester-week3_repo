@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}
+    <title>New</title>
+{% endblock %}
+
+{% block content %}
+    <h1>New page</h1>
+    <hr>
+    <form method="POST" action="{% url 'create' %}">
+        {% csrf_token %}
+        제목 : <input type="text" name="title"><br>
+        본문 : <textarea name="body" cols="30" rows="10"></textarea><br>
+        <button type="submit">작성</button>
+    </form>
+{% endblock %}
