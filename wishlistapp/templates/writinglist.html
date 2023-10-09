@@ -1,0 +1,10 @@
+{% extends 'index.html' %} {% block content %} {% if user.is_active %}
+
+<h2>{{ user.username }}님의 작성글</h2>
+{% for blog in user_blogs %}
+<a href="{% url 'detail' blog.id %}">{{ blog.title }}</a> <br />
+{% empty %}
+<p>작성글이 비어있습니다</p>
+{% endfor %} {% else %}
+<h1>로그인하면 볼 수 있는 페이지입니다.</h1>
+{% endif %} {% endblock %}

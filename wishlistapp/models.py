@@ -11,3 +11,6 @@ class Blog(models.Model):
         return self.title
     
     
+class Wishlist(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='wishlists', null=True)
+    post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='wishlists')

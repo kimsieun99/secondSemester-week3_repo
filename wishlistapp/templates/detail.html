@@ -1,12 +1,21 @@
-{% extends 'index.html' %}
+{% extends 'index.html' %} {% block title %}
+<title>Detail</title>
+{% endblock %} {% block content %}
+<h1>Detail page</h1>
+<hr />
+<h3>{{ blog.title }}</h3>
+<p>{{ blog.body }}</p>
 
-{% block title %}
-    <title>Detail</title>
-{% endblock %}
-
-{% block content %}
-    <h1>Detail page</h1>
-    <hr>
-    <h3>{{ blog.title }}</h3>
-    <p>{{ blog.body }}</p>
-{% endblock %}
+{% if user.is_authenticated %} {% if not already_in_wishlist %}
+<form method="POST" action="{% url 'add_to_wishlist' blog.id %}">
+  {% csrf_token %}
+  <button type="submit">찜하기</button>
+</form>
+{% else %}
+<form method="POST" action="{% url 'remove_from_wishlist' blog.id %}">
+  {% csrf_token %}
+  <button type="submit">찜취소</button>
+</form>
+{% endif %} {% else %}
+<p><a href="{% url 'login' %}">log in</a></p>
+{% endif %} {% endblock %}
